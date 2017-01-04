@@ -1,0 +1,8 @@
+ports:
+    http: 8080
+    debug: 5858
+
+auth:
+    jwt_secret: 'aYa14SDFG4ew$23s4A1'
+
+loglevel: info
