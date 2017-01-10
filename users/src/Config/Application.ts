@@ -9,8 +9,8 @@ export class Application {
     constructor() {
         this.express = new ExpressConfig();
 
-        const port = config.get('ports.http');
-        const debugPort = config.get('ports.debug');
+        const port: number = config.get<number>('ports.http');
+        const debugPort: number = config.get<number>('ports.debug');
 
         this.server = this.express.app.listen(port, () => {
             console.log('Server started!');

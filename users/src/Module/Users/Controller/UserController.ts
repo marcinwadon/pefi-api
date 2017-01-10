@@ -5,6 +5,11 @@ import { User } from '../../../Domain/Users/Entity/User';
 export class UserController {
     @Get('/')
     public get(): Array<User> {
-        return [new User('Marcin', 'marcin@wadon.net')];
+        return [new User('Zalogowany Marcin', 'marcin@wadon.net')];
+    }
+
+    @Get('/login')
+    public login(): Array<User> {
+        return [new User('Wylogowany Marcin', 'marcin@wadon.net')];
     }
 }

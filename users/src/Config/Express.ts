@@ -25,9 +25,12 @@ export class ExpressConfig {
 
     private setupServer(): void {
         useExpressServer(this.app, {
-            routePrefix: '/api',
+            routePrefix: config.get<string>('api.prefix'),
             controllers: [
                 __dirname + '/../Module/**/Controller/index.js'
+            ],
+            middlewares: [
+                __dirname + '/../Middlewares/*'
             ],
             container: Container
         });

@@ -1,3 +1,6 @@
+api:
+    prefix: '/api'
+
 ports:
     http: 8080
     debug: 5858
@@ -6,3 +9,21 @@ auth:
     jwt_secret: 'aYa14SDFG4ew$23s4A1'
 
 loglevel: info
+
+security:
+    role_hierarchy:
+        ROLE_USER:          []
+        ROLE_ADMIN:         [ROLE_USER]
+        ROLE_SUPER_ADMIN:   [ROLE_ADMIN]
+
+    firewalls:
+        api_open:
+            pattern:    ^%api_prefix%/user/(login|logout)$
+            security:   false
+
+        api:
+            pattern:    ^%api_prefix%
+            security:   true
+
+    access_control:
+        - { path: ^%api_prefix%, roles: [ROLE_USER] }
